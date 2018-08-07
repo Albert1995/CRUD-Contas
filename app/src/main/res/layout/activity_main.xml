@@ -4,15 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
-    <TextView
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="@id/gl_center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="100dp"
+        android:textSize="50dp"
+        android:textColor="@color/text"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_guest"
+        app:layout_constraintBottom_toBottomOf="@id/gl_center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="50dp"
+        android:textSize="20dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnIniciar"
+        app:layout_constraintTop_toTopOf="@id/gl_center_horizontal"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/primary"
+        android:paddingVertical="10dp"
+        android:textColor="@color/text"
+        android:onClick="beginOnClick"
+        />
 
 </android.support.constraint.ConstraintLayout>
