@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUnActivity"
-    android:background="@color/background">
+    tools:context=".SignUnActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_center_horizontal"
@@ -14,26 +13,53 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Por favor, digite seu nome:"
         app:layout_constraintBottom_toBottomOf="@id/gl_center_horizontal"
-        android:textColor="@color/text"
         android:layout_marginBottom="35dp"
         android:textSize="20dp"/>
 
 
     <EditText
+        android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/MyEditTextTheme"
         android:hint="Nome"
         android:inputType="text"
         android:singleLine="true"
         app:layout_constraintTop_toTopOf="@id/gl_center_horizontal"
         android:layout_marginHorizontal="20dp"
+        />
+
+    <TextView
+        android:id="@+id/txtNameError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="@id/editName"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_proximo"
+        app:layout_constraintBottom_toBottomOf="@id/gl_bottom"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="15dp"
+        android:paddingVertical="10dp"
+        android:onClick="nextOnClick"
         />
 
 </android.support.constraint.ConstraintLayout>

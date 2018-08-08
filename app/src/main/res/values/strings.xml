@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Contas</string>
-    <string name="btnIniciar">Iniciar</string>
+    <string name="btn_iniciar">Iniciar</string>
+    <string name="btn_proximo">Próximo</string>
     <string name="welcome_guest">Bem-Vindo!</string>
-    <string name="welcome_user">Bem-Vindo, %s!</string>
+    <string name="welcome_user">Bem-Vindo de volta %s!</string>
+    <string name="greetings_user">Muito prazer, %s! Vamos começar adicionando seu primeiro pagamento.</string>
+
+    <string name="conta_descricao">Descrição</string>
+    <string name="conta_valor">Valor</string>
+    <string name="conta_tipo">Tipo</string>
+    <string name="conta_forma_pagamento">Forma de Pagamento</string>
+    <string name="conta_entrada">Entrada</string>
+    <string name="conta_saida">Saída</string>
 </resources>

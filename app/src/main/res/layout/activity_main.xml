@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context=".MainActivity">
 
     <android.support.constraint.Guideline
@@ -22,7 +21,6 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="100dp"
         android:textSize="50dp"
-        android:textColor="@color/text"
         />
 
     <TextView
@@ -38,13 +36,11 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btnIniciar"
+        android:text="@string/btn_iniciar"
         app:layout_constraintTop_toTopOf="@id/gl_center_horizontal"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="15dp"
-        android:background="@color/primary"
         android:paddingVertical="10dp"
-        android:textColor="@color/text"
         android:onClick="beginOnClick"
         />
 
