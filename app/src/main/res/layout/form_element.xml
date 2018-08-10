@@ -9,6 +9,7 @@
     >
 
     <EditText
+        android:id="@+id/txtDescricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/conta_descricao"
@@ -26,9 +27,11 @@
             android:text="$" />
 
         <EditText
+            android:id="@+id/txtValor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/conta_valor"
+            android:inputType="numberDecimal"
             />
     </LinearLayout>
 
@@ -39,29 +42,37 @@
         />
 
     <RadioGroup
+        android:id="@+id/rdTipoConta"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         >
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rdEntrada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/conta_entrada" />
+            android:text="@string/conta_entrada"
+            />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rdSaida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/conta_saida" />
     </RadioGroup>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/conta_forma_pagamento"
-        />
+        android:text="@string/conta_forma_pagamento" />
+
+    <Spinner
+        android:id="@+id/spFormaPagamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/formas_pagamento"
+        android:spinnerMode="dialog" />
 </LinearLayout>

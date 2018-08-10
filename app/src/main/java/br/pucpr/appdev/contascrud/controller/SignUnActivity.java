@@ -1,4 +1,4 @@
-package br.pucpr.appdev.contascrud;
+package br.pucpr.appdev.contascrud.controller;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import br.pucpr.appdev.contascrud.R;
 
 public class SignUnActivity extends Activity {
 
@@ -26,6 +28,7 @@ public class SignUnActivity extends Activity {
             Intent i = new Intent(this, FormActivity.class);
             i.putExtra("user_name", name);
             startActivity(i);
+            finish();
         }
     }
 }

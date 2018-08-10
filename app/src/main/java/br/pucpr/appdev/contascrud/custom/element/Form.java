@@ -1,4 +1,4 @@
-package br.pucpr.appdev.contascrud.custom.view;
+package br.pucpr.appdev.contascrud.custom.element;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

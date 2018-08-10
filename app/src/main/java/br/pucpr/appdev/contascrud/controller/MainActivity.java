@@ -1,10 +1,11 @@
-package br.pucpr.appdev.contascrud;
+package br.pucpr.appdev.contascrud.controller;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import br.pucpr.appdev.contascrud.R;
 
 public class MainActivity extends Activity {
 
@@ -17,5 +18,6 @@ public class MainActivity extends Activity {
     public void beginOnClick(View v) {
         Intent i = new Intent(this, SignUnActivity.class);
         startActivity(i);
+        finish();
     }
 }
