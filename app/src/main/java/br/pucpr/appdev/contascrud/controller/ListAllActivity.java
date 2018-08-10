@@ -15,6 +15,8 @@ import br.pucpr.appdev.contascrud.model.Conta;
 import br.pucpr.appdev.contascrud.model.DataStore;
 import br.pucpr.appdev.contascrud.view.ContaAdapter;
 
+import static android.content.ContentValues.TAG;
+
 public class ListAllActivity extends Activity {
 
     private RecyclerView recyclerView;
@@ -62,12 +64,19 @@ public class ListAllActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("APP01","teste result");
         if (requestCode == 1000) {
             if (resultCode == RESULT_OK) {
-                Log.d("APP02","teste result adapter");
-                Conta c = getIntent().getParcelableExtra("conta");
+                Conta c = data.getParcelableExtra("conta");
                 DataStore.getInstance().addConta(c);
+                adapter.notifyDataSetChanged();
+            }
+        } else if (requestCode == 2000) {
+            if (resultCode == RESULT_OK) {
+                Conta c = data.getParcelableExtra("conta");
+                int pos = data.getIntExtra("pos", -1);
+                Log.d(TAG, "onActivityResult: " + pos);
+
+                DataStore.getInstance().editConta(c, pos);
                 adapter.notifyDataSetChanged();
             }
         }

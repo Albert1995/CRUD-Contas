@@ -1,6 +1,7 @@
 package br.pucpr.appdev.contascrud.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,9 @@ public class DataStore {
     }
 
     public void editConta(Conta c, int position) {
-        contas.set(position, c);
+        Log.d("Teste","posição : " + position);
+        if (position >= 0)
+            contas.set(position, c);
     }
 
     public void removeConta(int position) {
