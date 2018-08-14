@@ -7,4 +7,9 @@
         android:title="Nova Conta"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/menuReset"
+        android:title="Apagar Tudo"
+        app:showAsAction="never"/>
+
 </menu>

@@ -33,47 +33,35 @@
             />
 
         <TextView
-            android:id="@+id/txtViewTipo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TIPO"
-            app:layout_constraintTop_toBottomOf="@id/txtViewDescricao"
-            app:layout_constraintLeft_toLeftOf="@id/gl_10dp_left"
-            android:layout_marginTop="5dp"
-            />
-
-        <TextView
             android:id="@+id/txtViewValor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$"
-            app:layout_constraintTop_toBottomOf="@id/txtViewTipo"
+            app:layout_constraintTop_toBottomOf="@id/txtViewDescricao"
             app:layout_constraintLeft_toRightOf="@id/gl_10dp_left"
             android:layout_marginTop="5dp"
+            android:textStyle="bold"
             />
 
         <ImageButton
             android:id="@+id/editConta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_edit"
+            android:src="@drawable/ic_baseline_create"
             app:layout_constraintRight_toLeftOf="@id/gl_8perc" />
 
         <ImageButton
             android:id="@+id/removeConta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:src="@drawable/ic_baseline_clear"
             app:layout_constraintLeft_toRightOf="@id/gl_8perc" />
 
     </android.support.constraint.ConstraintLayout>
 
-
-    <TextView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-        android:gravity="center"
-        />
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
 
 </LinearLayout>

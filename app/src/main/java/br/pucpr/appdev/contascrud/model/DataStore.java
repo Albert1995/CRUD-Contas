@@ -22,6 +22,9 @@ public class DataStore {
 
     public void setContext(Context context) {
         this.ctx = context;
+        for (int i = 1; i <= 15; i++) {
+            contas.add(new Conta("Conta " + i, 100.0, TipoConta.ENTRADA, FormaPagamento.BOLETO));
+        }
     }
 
     public void addConta(Conta c) {

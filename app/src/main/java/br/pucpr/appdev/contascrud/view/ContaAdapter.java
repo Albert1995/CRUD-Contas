@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,9 +40,13 @@ public class ContaAdapter extends RecyclerView.Adapter<ContaAdapter.ContaHolder>
     @Override
     public void onBindViewHolder(@NonNull ContaHolder holder, final int position) {
         final Conta c = contas.get(position);
+
+        // Set Descrição
         holder.descricao.setText(c.getDescricao());
+
+        // Set Valor de acordo com o tipo de conta
         holder.valor.setText("$ " + String.valueOf(c.getValor()));
-        holder.tipo.setText("[ " + c.getTipo() + " - " + c.getFormaPagamento().getNome() + " ]");
+        holder.valor.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), c.getTipo().getColorId()));
 
         final Activity ctx = (Activity) holder.itemView.getContext();
 
@@ -81,7 +86,7 @@ public class ContaAdapter extends RecyclerView.Adapter<ContaAdapter.ContaHolder>
 
     class ContaHolder extends RecyclerView.ViewHolder {
 
-        TextView descricao, valor, tipo;
+        TextView descricao, valor;
         ImageButton removeBtn, editBtn;
 
         public ContaHolder(View itemView) {
@@ -89,7 +94,6 @@ public class ContaAdapter extends RecyclerView.Adapter<ContaAdapter.ContaHolder>
 
             descricao = itemView.findViewById(R.id.txtViewDescricao);
             valor = itemView.findViewById(R.id.txtViewValor);
-            tipo = itemView.findViewById(R.id.txtViewTipo);
             removeBtn = itemView.findViewById(R.id.removeConta);
             editBtn = itemView.findViewById(R.id.editConta);
         }

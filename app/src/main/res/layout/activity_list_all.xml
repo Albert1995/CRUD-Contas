@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.ListAllActivity">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/bottom_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/right_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="1" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvListAll"
@@ -12,6 +26,20 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_add"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_horizontal"
+        app:layout_constraintRight_toLeftOf="@+id/right_vertical"
+        android:layout_margin="20dp"
+        />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

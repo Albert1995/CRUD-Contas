@@ -5,4 +5,7 @@
     <color name="second">#BFC0C0</color>
     <color name="text">#FFFFFF</color>
     <color name="other">#EF8354</color>
+
+    <color name="conta_entrada_valor">#4caf50</color>
+    <color name="conta_saida_valor">#d50000</color>
 </resources>
