@@ -48,4 +48,8 @@ public class DataStore {
     public List<Conta> getAllContas() {
         return contas;
     }
+
+    public void clear() {
+        contas.clear();
+    }
 }

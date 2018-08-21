@@ -45,10 +45,8 @@ public class ListAllActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options, menu);
-
         return true;
     }
 
@@ -57,6 +55,10 @@ public class ListAllActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.addConta:
                 startActivityForResult(new Intent(this, FormActivity.class), 1000);
+                break;
+            case R.id.menuReset:
+                DataStore.getInstance().clear();
+                adapter.notifyDataSetChanged();
                 break;
         }
         return true;

@@ -12,6 +12,8 @@ public class Conta implements Parcelable {
     private TipoConta tipo;
     private FormaPagamento formaPagamento;
 
+    public Conta() {}
+
     public Conta(String descricao, double valor, TipoConta tipo, FormaPagamento formaPagamento) {
         this.descricao = descricao;
         this.valor = valor;
