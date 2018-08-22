@@ -12,17 +12,15 @@ import java.io.Writer;
 
 public class DAOUtil {
 
-    public static final String DB_FILE = "db.dat";
-
-    public static Reader openFileToRead(Context ctx) throws FileNotFoundException {
-        InputStream in = ctx.openFileInput(DB_FILE);
+    public static Reader openFileToRead(String file, Context ctx) throws FileNotFoundException {
+        InputStream in = ctx.openFileInput(file);
         InputStreamReader isr = new InputStreamReader(in);
 
         return isr;
     }
 
-    public static Writer openFileToWrite(Context ctx) throws FileNotFoundException {
-        OutputStream out = ctx.openFileOutput(DB_FILE, Context.MODE_PRIVATE);
+    public static Writer openFileToWrite(String file, Context ctx, int mode) throws FileNotFoundException {
+        OutputStream out = ctx.openFileOutput(file, mode);
         OutputStreamWriter osw = new OutputStreamWriter(out);
 
         return osw;

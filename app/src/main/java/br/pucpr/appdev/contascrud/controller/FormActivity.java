@@ -3,7 +3,6 @@ package br.pucpr.appdev.contascrud.controller;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +15,10 @@ import br.pucpr.appdev.contascrud.model.Conta;
 import br.pucpr.appdev.contascrud.model.FormaPagamento;
 import br.pucpr.appdev.contascrud.model.TipoConta;
 
-import static android.content.ContentValues.TAG;
-
 public class FormActivity extends Activity {
 
     private boolean firstTime = false;
-    private int position = -1;
+    private long id = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +28,6 @@ public class FormActivity extends Activity {
         String username = getIntent().getStringExtra("user_name");
         Conta c = getIntent().getParcelableExtra("conta");
 
-        position = getIntent().getIntExtra("position", -1);
-        Log.d(TAG, "onCreate: " + position);
-
         if (username != null) {
             TextView labelForm = findViewById(R.id.labelForm);
             String lblFormText = String.format(getResources().getString(R.string.greetings_user), username);
@@ -42,6 +36,7 @@ public class FormActivity extends Activity {
         }
 
         if (c != null) {
+            id = c.getId();
             ((Button) findViewById(R.id.addEditForm)).setText("Alterar");
 
             ((EditText) findViewById(R.id.txtDescricao)).setText(c.getDescricao());
@@ -94,12 +89,9 @@ public class FormActivity extends Activity {
                 break;
         }
 
-        Conta c = new Conta(descricao, valor, tipo, formaPagamento);
+        Conta c = new Conta(id, descricao, valor, tipo, formaPagamento);
         Intent i = new Intent(this, ListAllActivity.class);
         i.putExtra("conta", c);
-
-        Log.d(TAG, "addOnClick: " + position);
-        i.putExtra("pos", position);
 
         if(firstTime)
             startActivity(i);

@@ -21,6 +21,14 @@ public class Conta implements Parcelable {
         this.formaPagamento = formaPagamento;
     }
 
+    public Conta(long id, String descricao, double valor, TipoConta tipo, FormaPagamento formaPagamento) {
+        this.id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.tipo = tipo;
+        this.formaPagamento = formaPagamento;
+    }
+
     protected Conta(Parcel in) {
         id = in.readLong();
         descricao = in.readString();

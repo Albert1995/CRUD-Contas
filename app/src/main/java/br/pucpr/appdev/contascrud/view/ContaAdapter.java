@@ -17,15 +17,21 @@ import java.util.List;
 
 import br.pucpr.appdev.contascrud.R;
 import br.pucpr.appdev.contascrud.controller.FormActivity;
+import br.pucpr.appdev.contascrud.dao.interfaces.ContaDAO;
 import br.pucpr.appdev.contascrud.model.Conta;
-import br.pucpr.appdev.contascrud.model.DataStore;
 
 public class ContaAdapter extends RecyclerView.Adapter<ContaAdapter.ContaHolder> {
 
     private List<Conta> contas;
+    private ContaDAO dao;
 
-    public ContaAdapter() {
-        contas = DataStore.getInstance().getAllContas();
+    public ContaAdapter(List<Conta> contas, ContaDAO dao) {
+        this.contas = contas;
+        this.dao = dao;
+    }
+
+    public void setContas(List<Conta> contas) {
+        this.contas = contas;
     }
 
     @NonNull
@@ -59,7 +65,8 @@ public class ContaAdapter extends RecyclerView.Adapter<ContaAdapter.ContaHolder>
                 alertBuilder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        DataStore.getInstance().removeConta(position);
+                        dao.remove(c);
+                        contas = dao.getAll();
                         notifyDataSetChanged();
                     }
                 });
@@ -73,7 +80,6 @@ public class ContaAdapter extends RecyclerView.Adapter<ContaAdapter.ContaHolder>
             public void onClick(View view) {
                 Intent i = new Intent(ctx, FormActivity.class);
                 i.putExtra("conta", c);
-                i.putExtra("position", position);
                 ctx.startActivityForResult(i, 2000);
             }
         });

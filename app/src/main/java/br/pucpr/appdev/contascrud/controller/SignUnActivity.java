@@ -8,11 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
@@ -50,7 +47,6 @@ public class SignUnActivity extends Activity {
                 OutputStreamWriter writer = new OutputStreamWriter(out);
                 ) {
             Log.d("CONTAS-SAVE-001", "Salvando o nome do usuário...");
-            writer.append(">>> USER\n");
             writer.append(user.getName());
             writer.flush();
             Log.d("CONTAS-SAVE-002", "Nome do usuário foi salvo com sucesso.");

@@ -3,6 +3,8 @@ package br.pucpr.appdev.contascrud.dao.impl;
 import android.content.Context;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -21,18 +23,19 @@ public class FileContaDAO implements ContaDAO {
 
     private Context ctx;
     private final String separator = ";";
+    private static final String dbFile = "contas.db.dat";
 
     public FileContaDAO(Context ctx) {
         this.ctx = ctx;
     }
 
     private void saveAll(List<Conta> contas) throws DAOException {
-        try (PrintWriter writer = new PrintWriter(DAOUtil.openFileToWrite(ctx))) {
+        try (PrintWriter writer = new PrintWriter(DAOUtil.openFileToWrite(dbFile, ctx, Context.MODE_PRIVATE))) {
             writer.print("");
             for (Conta conta : contas)
-                writer.print(conta.getId() + separator + conta.getDescricao() + separator
+                writer.append(conta.getId() + separator + conta.getDescricao() + separator
                         + conta.getValor() + separator + conta.getTipo() + separator
-                        + conta.getFormaPagamento() + "\r\n");
+                        + conta.getFormaPagamento() + "\n");
         } catch (IOException e) {
             throw new DAOException(e);
         }
@@ -40,19 +43,26 @@ public class FileContaDAO implements ContaDAO {
 
     @Override
     public void save(Conta c) throws DAOException {
-        List<Conta> contas = getAll();
         if (c.getId() > 0) {
+            List<Conta> contas = getAll();
             for (int count = 0; count < contas.size(); count++) {
                 if (contas.get(count).getId() == c.getId()) {
                     contas.set(count, c);
                 }
             }
+            saveAll(contas);
         } else {
-            c.setId(Long.parseLong(new SimpleDateFormat("yyMMddHHmmss").format(new Date())));
-            contas.add(c);
+            c.setId(Long.parseLong(new SimpleDateFormat("yyMMddHHmmssSSS").format(new Date())));
+            try (BufferedWriter writer = new BufferedWriter(DAOUtil.openFileToWrite(dbFile, ctx, Context.MODE_APPEND))) {
+                writer.append(c.getId() + separator + c.getDescricao() + separator
+                            + c.getValor() + separator + c.getTipo() + separator
+                            + c.getFormaPagamento() + "\n");
+            } catch (IOException e) {
+                throw new DAOException(e);
+            }
         }
 
-        saveAll(contas);
+
     }
 
     @Override
@@ -71,6 +81,11 @@ public class FileContaDAO implements ContaDAO {
     }
 
     @Override
+    public void removeAll() throws DAOException {
+        ctx.deleteFile(dbFile);
+    }
+
+    @Override
     public Conta getById(long id) throws DAOException {
         Conta c = null;
         List<Conta> contas = getAll();
@@ -84,7 +99,7 @@ public class FileContaDAO implements ContaDAO {
     @Override
     public List<Conta> getAll() throws DAOException {
         List<Conta> contas = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(DAOUtil.openFileToRead(ctx))) {
+        try (BufferedReader reader = new BufferedReader(DAOUtil.openFileToRead(dbFile, ctx))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String splited[] = line.split(separator);
@@ -98,6 +113,8 @@ public class FileContaDAO implements ContaDAO {
 
                 contas.add(c);
             }
+        } catch (FileNotFoundException e) {
+            throw new DAOException(e);
         } catch (IOException e) {
             throw new DAOException(e);
         }
